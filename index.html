@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<input type="text" id="track-id">
+<input type="button" id="track-id-submit" value="play" onclick="playTrack()">
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+    var socket = io.connect('http://localhost:8080/controller');
+
+    function playTrack() {
+        var trackiD = document.getElementById("track-id").value;
+        socket.emit("controller:play", {track: trackiD})
+    }
+
+</script>
+
+</body>
+</html>
